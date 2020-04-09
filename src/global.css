@@ -1,43 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Verdana:wght@400;500;700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font: 400 14px Verdana, sans-serif;
-    background: #ebebec;
-    -webkit-font-smoothing: antialiased;
+  font: 400 14px Verdana, sans-serif;
+  background: #ebebec;
+  -webkit-font-smoothing: antialiased;
 }
 
 .button {
-    width: 246px;
-    height: 51px;
-    background: #de4b4b;
-    border: 0;
-    border-radius: 8px;
-    color: #ffffff;
-    font: 700 17px/22px Verdana;
-    margin-top: 35px;
-    display: inline-block;
-    /* text-align: center; */
-    text-decoration: none;
-    font-size: 17px;
-    transition: filter 0.2s;
-    letter-spacing: -0.01px;
-    cursor: pointer;
-    margin-left: auto;
+  width: 246px;
+  height: 51px;
+  background: #de4b4b;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  font: 700 17px/22px Verdana;
+  margin-top: 35px;
+  display: inline-block;
+  /* text-align: center; */
+  text-decoration: none;
+  font-size: 17px;
+  transition: filter 0.2s;
+  letter-spacing: -0.01px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 button:hover {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 @media (max-width: 50.5em) {
-    .button {
-        width: 100%;
-    }
+  .button {
+    width: 100%;
+  }
 }

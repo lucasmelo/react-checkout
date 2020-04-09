@@ -1,280 +1,378 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;700&display=swap");
+
 .checkout-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100;
-    max-width: 1120px;
-    height: 100vh;
-    margin: 0 auto;
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center;
+  width: 100;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  opacity: 1;
+  margin: 0 auto;
+}
+
+.header-container {
+  position: fixed;
+  background: #fff;
+  border: none;
+  border-bottom: 3px solid #f7f7f7;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}   
+
+.header-content {
+  width: 100%;
+  max-width: 1120px;
+}
+
+.header-container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container header a {
+  text-decoration: none;
+  font: 400 10px Verdana, sans-serif;
+  color: #de4b4b;
+  padding: 10px;
+  border: none;
+  border-right: 2px solid #de4b4b1f;
+  border-left: 2px solid #de4b4b1f;
+  border-radius: 10px;
+  transition: background 1s;
+  margin-right: 0;
+}
+
+.header-container header a:hover {
+    background: #dd8c8c3a;
     opacity: 1;
+  }
+
+.checkout-container-off {
+  display: inline;
 }
 
 .checkout-container section {
-    width: 352px;
-    background: #de4b4b;
-    padding: 40px;
-    border-radius: 8px;
-    z-index: 1;
+  width: 352px;
+  background: #de4b4b;
+  padding: 40px;
+  z-index: 1;
+  border-radius: 10px 0 0 10px;
 }
 
 .checkout-container section h1 {
-    font: Bold 20px/24px Verdana, sans-serif;
-    color: #fff;
-    margin-left: 20px;
-    letter-spacing: -0.01px;
-    color: #ffffff;
-    opacity: 1;
+  font: Bold 20px/24px Verdana, sans-serif;
+  color: #fff;
+  margin-left: 20px;
+  letter-spacing: -0.01px;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .checkout-container section a {
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01px;
+  color: #ffffff;
+  opacity: 1;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: filter 0.3s;
+}
+
+.checkout-container section a:hover {
+  filter: brightness(75%);
+}
+
+.checkout-container section a svg {
+  margin-right: 10px;
+}
+
+.group {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 30px;
+}
+
+.credit-card {
+  /* margin-top: 30px; */
+}
+
+.steps {
+  display: none;
+}
+
+.steps strong {
+  margin: 0 4px;
+  font: Regular 13px/36px Verdana;
+  letter-spacing: -0.01px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.stepper span {
+  font: Regular 13px/36px Verdana;
+  letter-spacing: -0.01px;
+  color: #de4b4b;
+  opacity: 1;
+  margin: 10px;
+}
+
+.checked {
+  background: #de4b4b;
+  padding: 5px;
+  border-radius: 33px;
+}
+
+.img-credit-card {
+  position: relative;
+  text-align: center;
+  color: white;
+  width: 340px;
+  height: 222px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 36px;
+  font-family: "Baloo Thambi 2", cursive;
+}
+
+.top-left {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-family: "Baloo Thambi 2", cursive;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-family: "Baloo Thambi 2", cursive;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -30%);
+  font-family: "Baloo Thambi 2", cursive;
+  font-size: 20px;
+  letter-spacing: 7.88px;
+  color: #ffffff;
+  text-shadow: 0px 1px 2px #000000b3;
+  opacity: 1;
+  max-width: 100%;
+  width: 100%;
+}
+
+form .input {
+  width: 100%;
+  margin-top: 25px;
+  text-align: left;
+  font: Regular 17px/22px Verdana;
+  font-size: 15px;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  margin: 0 0 0 10%;
+  margin-top: 30px;
+  margin-left: 153px;
+  margin-right: 54px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-width {
+  width: 50%;
+  margin-top: 25px;
+  text-align: left;
+  font: Regular 17px/22px Verdana;
+  font-size: 15px;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+.form-container {
+  height: 456px;
+  width: 100%;
+  background: #fff;
+  /* z-index: -1; */
+  display: flex;
+  /* border-radius: 0px 20px 20px 0; */
+  border: 1px solid #de4b4b30;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.error-message {
+  font: Regular 16px Verdana;
+  color: #de4b4b;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.input-error {
+  width: 100%;
+  margin-top: 25px;
+  text-align: left;
+  font: Regular 17px/22px Verdana;
+  font-size: 15px;
+  letter-spacing: 0px;
+  opacity: 1;
+  border-bottom: 1px solid #de4b4b;
+}
+
+form input {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 0;
+}
+
+.no-display {
+  display: none;
+}
+
+.display {
+  display: inline;
+}
+
+@media (max-width: 60.5em) {
+  form {
     display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-top: 110px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .form-container {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    border: 1px solid #de4b4b30;
+    border-radius: 0;
+  }
+  .checkout-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .group {
+    display: flex;
+    justify-content: center;
     align-items: center;
+  }
+  .checkout-container section a {
+    display: none;
+  }
+  .steps {
+    display: flex;
+    justify-content: center;
     letter-spacing: -0.01px;
     color: #ffffff;
     opacity: 1;
     text-decoration: none;
     margin-bottom: 40px;
-    transition: filter 0.3s;
-}
-
-.checkout-container section a:hover {
-    filter: brightness(75%);
-}
-
-.checkout-container section a svg {
-    margin-right: 10px;
-}
-
-.group {
+    transition: color 0.2s;
+  }
+  .credit-card {
     display: flex;
-    flex-flow: row nowrap;
-    margin-bottom: 30px;
-}
-
-.credit-card {
-    /* margin-top: 30px; */
-}
-
-.steps {
-    display: none;
-}
-
-.steps strong {
-    margin: 0 4px;
-    font: Regular 13px/36px Verdana;
+    justify-content: center;
+    width: 280px;
+    height: 172px;
+    margin-top: 15px;
+  }
+  .checkout-container section {
+    width: 100vw;
+    height: 239px;
+    background: #de4b4b;
+    padding: 40px;
+    border-radius: 0;
+  }
+  .img-credit-card {
+    display: flex;
+    justify-content: center;
+  }
+  .checkout-container section h1 {
+    font: Bold 16px/20px Verdana, sans-serif;
+    color: #fff;
+    margin-left: 20px;
     letter-spacing: -0.01px;
     color: #ffffff;
     opacity: 1;
-}
-
-.stepper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.stepper span {
-    font: Regular 13px/36px Verdana;
-    letter-spacing: -0.01px;
-    color: #de4b4b;
-    opacity: 1;
-    margin: 10px;
-}
-
-.checked {
-    background: #de4b4b;
-    padding: 5px;
-    border-radius: 33px;
-}
-
-.img-credit-card {
-    position: relative;
-    text-align: center;
-    color: white;
-    width: 340px;
-    height: 222px;
-}
-
-.bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-}
-
-.top-left {
-    position: absolute;
-    top: 30px;
-    left: 25px;
-}
-
-.top-right {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-}
-
-.bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-}
-
-.centered {
+    text-align: left;
+  }
+  .stepper {
+    display: none;
+  }
+  .centered {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-form .input {
-    width: 100%;
-    margin-top: 25px;
-    text-align: left;
-    font: Regular 17px/22px Verdana;
-    font-size: 15px;
-    letter-spacing: 0px;
+    left: 55%;
+    transform: translate(-54%, -10%);
+    font-family: "Baloo Thambi 2", cursive;
+    font-size: 19px;
+    letter-spacing: 2.88px;
+    color: #ffffff;
+    text-shadow: 0px 1px 2px #000000b3;
     opacity: 1;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
     width: 100%;
-    margin: 0 0 0 10%;
-    margin-top: 30px;
-    margin-left: 153px;
-    margin-right: 54px;
-}
-
-.input-group {
-    display: flex;
-    justify-content: space-between;
-}
-
-.input-width {
-    width: 50%;
-    margin-top: 25px;
-    text-align: left;
-    font: Regular 17px/22px Verdana;
-    font-size: 15px;
+  }
+  .top-left {
+    position: absolute;
+    top: 30px;
+    left: 53px;
+  }
+  .bottom-left {
+    position: absolute;
+    bottom: 58px;
+    left: 62px;
+    font-size: 13px;
+    font-family: "Baloo Thambi 2", cursive;
     letter-spacing: 0px;
+    color: #ffffff;
+    text-shadow: 0px 1px 2px #000000b3;
     opacity: 1;
-}
-
-.form-container {
-    /* height: 514px; */
-    width: 100%;
-    background: #fff;
-    /* z-index: -1; */
-    display: flex;
-    border-radius: 0px 20px 20px 0;
-    border: 1px solid #de4b4b30;
-}
-
-.error-message {
-    font: Regular 16px Verdana;
-    color: #de4b4b;
-    font-size: 11px;
-    margin-top: 3px;
-}
-
-.error-border {
-    width: 100%;
-    margin-top: 25px;
-    text-align: left;
-    font: Regular 17px/22px Verdana;
-    font-size: 15px;
+  }
+  .bottom-right {
+    position: absolute;
+    bottom: 58px;
+    right: 63px;
     letter-spacing: 0px;
+    color: #ffffff;
+    text-shadow: 0px 1px 2px #000000b3;
     opacity: 1;
-    border-bottom: 1px solid #de4b4b;
-}
-
-form input {
-    height: 40px;
-    border: none;
-    border-bottom: 1px solid #d2d2d2;
-    padding: 0;
-}
-
-@media (max-width: 60.5em) {
-    form {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-        margin-top: 80px;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .form-container {
-        width: 100%;
-        background: #fff;
-        display: flex;
-        border: 1px solid #de4b4b30;
-    }
-}
-
-@media (max-width: 60.5em) {
-    .checkout-container {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-    }
-
-    .group {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .checkout-container section a {
-        display: none;
-    }
-
-    .steps {
-        display: flex;
-        justify-content: center;
-        letter-spacing: -0.01px;
-        color: #ffffff;
-        opacity: 1;
-        text-decoration: none;
-        margin-bottom: 40px;
-        transition: color 0.2s;
-    }
-
-    .credit-card {
-        display: flex;
-        justify-content: center;
-        width: 280px;
-        height: 172px;
-        margin-top: 15px;
-    }
-
-    .checkout-container section {
-        width: 100vw;
-        height: 239px;
-        background: #de4b4b;
-        padding: 40px;
-    }
-
-    .img-credit-card {
-        display: flex;
-        justify-content: center;
-    }
-
-    .checkout-container section h1 {
-        font: Bold 16px/20px Verdana, sans-serif;
-        color: #fff;
-        margin-left: 20px;
-        letter-spacing: -0.01px;
-        color: #ffffff;
-        opacity: 1;
-        text-align: left;
-    }
-
-    .stepper {
-        display: none;
-    }
+    font-family: "Baloo Thambi 2", cursive;
+    font-size: 12px;
+  }
 }
