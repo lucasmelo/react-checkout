@@ -20,8 +20,7 @@ const validations = yup.object().shape({
         .number()
         .required('Campo obrigatório')
         .test('test-number', 'Número de cartão inválido', value => Validate.number(value).isValid)
-        .min(10, 'Seu cartão possui mais numeros')
-        .max(20),
+        .min(10, 'Digite todos os números do seu cartão'),
     name: yup
         .string()
         .min(3, 'Insira o nome completo')
@@ -52,7 +51,8 @@ class Checkout extends React.Component {
             cvv: '',
             brand: '',
             displayBrand: 'no-display',
-            filledCreditCard: 'card-no-filled'
+            filledCreditCard: 'card-no-filled',
+            showInputedCardData: 'img-credit-card'
         };
     };
 
@@ -92,7 +92,6 @@ class Checkout extends React.Component {
 
     render() {
         return (
-
             <div>
                 <div className="header-container">
                     <div className="header-content">
@@ -106,9 +105,7 @@ class Checkout extends React.Component {
                     </div>
                 </div>
 
-
                 <div className="checkout-container">
-
                     <section>
                         <div>
                             <Link to="/register">
@@ -125,14 +122,22 @@ class Checkout extends React.Component {
                         </div>
 
                         <div className="img-credit-card">
-                            <img src={`../${this.state.filledCreditCard}.svg`} alt="Cartão de Crédito" className="credit-card" />
+                            <img
+                                src={`../${this.state.filledCreditCard}.svg`}
+                                alt="Cartão de Crédito" className="credit-card"
+                            />
                             <div className="top-left">
-                                <img src={`../${this.state.brand}.png`} alt="Visa" className={this.state.displayBrand.toString()} />
+                                <img
+                                    src={`../${this.state.brand}.png`}
+                                    alt="Visa"
+                                    className={this.state.displayBrand.toString()}
+                                />
                             </div>
                             <div className="centered"> {this.state.number || '**** **** **** ****'} </div>
                             <div className="bottom-left"> {this.state.name.toUpperCase() || 'NOME DO TITULAR'} </div>
                             <div className="bottom-right">{this.state.expiration || '00/00'} </div>
                         </div>
+
                     </section>
 
                     <div className="form-container">
@@ -153,24 +158,43 @@ class Checkout extends React.Component {
                                         <span>Confirmação</span>
                                     </div>
 
-                                    <Field type="number" maxLength={20} placeholder="Número do cartão" name="number" className={touched.number && errors.number ? 'input-error' : 'input'} onKeyUp={e =>
-                                        this.handleValues('number', e.target.value)} />
+                                    <Field
+                                        type="number"
+                                        maxLength={20}
+                                        placeholder="Número do cartão"
+                                        name="number"
+                                        className={touched.number && errors.number ? 'input-error' : 'input'}
+                                        onKeyUp={e => this.handleValues('number', e.target.value)}
+                                    />
                                     <ErrorMessage component="span" name="number" className="error-message" />
 
-                                    <Field placeholder="Nome (igual  ao cartão)" name="name" className={touched.name && errors.name ? 'input-error' : 'input'} onKeyUp={e =>
-                                        this.handleValues('name', e.target.value)} />
+                                    <Field
+                                        placeholder="Nome (igual  ao cartão)"
+                                        name="name" className={touched.name && errors.name ? 'input-error' : 'input'}
+                                        onKeyUp={e => this.handleValues('name', e.target.value)}
+                                    />
                                     <ErrorMessage component="span" name="name" className="error-message" />
 
                                     <div className="input-group">
                                         <div>
-                                            <Field type="number" placeholder="Validade" name="expiration" className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
-                                                onKeyUp={e =>
-                                                    this.handleValues('expiration', moment().format(e.target.value))} />
+                                            <Field
+                                                type="number"
+                                                placeholder="Validade"
+                                                name="expiration"
+                                                className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
+                                                onKeyUp={e => this.handleValues('expiration', moment().format(e.target.value))}
+                                            />
                                             <ErrorMessage component="span" name="expiration" className="error-message" />
                                         </div>
 
                                         <div>
-                                            <Field placeholder="CVV" name="cvv" className={touched.cvv && errors.cvv ? 'input-error' : 'input'} />
+                                            <Field
+                                                onKeyUp={() => this.setState({ filledCreditCard: 'cvv-template', showInputedCardData: 'no-display' })}
+                                                onBlur={() => this.setState({ filledCreditCard: 'card-filled' })}
+                                                placeholder="CVV"
+                                                name="cvv"
+                                                className={touched.cvv && errors.cvv ? 'input-error' : 'input'}
+                                            />
                                             <ErrorMessage component="span" name="cvv" className="error-message" />
                                         </div>
                                     </div>

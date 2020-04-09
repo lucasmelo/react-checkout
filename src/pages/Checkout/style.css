@@ -35,6 +35,7 @@
   justify-content: space-between;
 }
 
+
 .header-container header a {
   text-decoration: none;
   font: 400 10px Verdana, sans-serif;
@@ -44,12 +45,12 @@
   border-right: 2px solid #de4b4b1f;
   border-left: 2px solid #de4b4b1f;
   border-radius: 10px;
-  transition: background 1s;
+  transition: background 0.5s;
   margin-right: 0;
 }
 
 .header-container header a:hover {
-    background: #dd8c8c3a;
+    background: #dd8c8c09;
     opacity: 1;
   }
 
@@ -61,7 +62,6 @@
   width: 352px;
   background: #de4b4b;
   padding: 40px;
-  z-index: 1;
   border-radius: 10px 0 0 10px;
 }
 
@@ -262,6 +262,10 @@ form input {
   display: none;
 }
 
+.no-visibility {
+    visibility: none;
+}
+
 .display {
   display: inline;
 }
@@ -374,5 +378,8 @@ form input {
     opacity: 1;
     font-family: "Baloo Thambi 2", cursive;
     font-size: 12px;
+  }
+  .header-container {
+      display: none;
   }
 }
