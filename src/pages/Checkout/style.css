@@ -48,11 +48,11 @@
 .group {
     display: flex;
     flex-flow: row nowrap;
+    margin-bottom: 30px;
 }
 
 .credit-card {
-    margin-top: 30px;
-    z-index: 10;
+    /* margin-top: 30px; */
 }
 
 .steps {
@@ -86,6 +86,134 @@
     background: #de4b4b;
     padding: 5px;
     border-radius: 33px;
+}
+
+.img-credit-card {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 340px;
+    height: 222px;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+.top-left {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+}
+
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form .input {
+    width: 100%;
+    margin-top: 25px;
+    text-align: left;
+    font: Regular 17px/22px Verdana;
+    font-size: 15px;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    margin: 0 0 0 10%;
+    margin-top: 30px;
+    margin-left: 153px;
+    margin-right: 54px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-width {
+    width: 50%;
+    margin-top: 25px;
+    text-align: left;
+    font: Regular 17px/22px Verdana;
+    font-size: 15px;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+.form-container {
+    /* height: 514px; */
+    width: 100%;
+    background: #fff;
+    /* z-index: -1; */
+    display: flex;
+    border-radius: 0px 20px 20px 0;
+    border: 1px solid #de4b4b30;
+}
+
+.error-message {
+    font: Regular 16px Verdana;
+    color: #de4b4b;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.error-border {
+    width: 100%;
+    margin-top: 25px;
+    text-align: left;
+    font: Regular 17px/22px Verdana;
+    font-size: 15px;
+    letter-spacing: 0px;
+    opacity: 1;
+    border-bottom: 1px solid #de4b4b;
+}
+
+form input {
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #d2d2d2;
+    padding: 0;
+}
+
+@media (max-width: 60.5em) {
+    form {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-top: 80px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .form-container {
+        width: 100%;
+        background: #fff;
+        display: flex;
+        border: 1px solid #de4b4b30;
+    }
 }
 
 @media (max-width: 60.5em) {

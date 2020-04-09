@@ -2,6 +2,7 @@ import React from 'react';
 import { ErrorMessage, Formik, Form as FormikForm, Field } from 'formik';
 import './style.css'
 import checked from '../../assets/checked.svg';
+
 import { FiChevronRight } from 'react-icons/fi';
 import * as yup from 'yup'
 import Validate from 'card-validator';
@@ -103,9 +104,6 @@ const Form = () => {
     )
 };
 
-// Form.propTypes = {
-//     handleSubmit: PropTypes.func.isRequired,
-//     initialValues: PropTypes.object.isRequired
-// }
+
 
 export default Form;
