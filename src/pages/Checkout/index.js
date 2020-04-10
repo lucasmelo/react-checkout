@@ -199,13 +199,34 @@ class Checkout extends React.Component {
                                         </div>
                                     </div>
 
+
+
                                     <button type="submit" className="button">
                                         CONTINUAR
-                                </button>
+                                    </button>
                                 </FormikForm>
                             )}
                         </Formik>
                     </div>
+
+                    <div className="sidebar-container">
+                        <h3>SUA COMPRA</h3>
+
+                        <hr></hr>
+                        <p>Fone de ouvido X</p>
+                        <p>Mouse Y</p>
+                        <p>Roteador X</p>
+                        <p>SSD Y</p>
+                        <p>Monitor W</p>
+                        <p>Teclado Z</p>
+                        <p>Teclado Z</p>
+                        <hr></hr>
+
+                        <h4> TOTAL </h4>
+
+                        <span> R$ 4.750.99 </span>
+                    </div>
+
                 </div>
             </div>
         );

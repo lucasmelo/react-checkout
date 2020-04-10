@@ -5,7 +5,7 @@
   /* justify-content: flex-start; */
   align-items: center;
   width: 100;
-  max-width: 1120px;
+  max-width: 1200px;
   height: 100vh;
   margin: 0 auto;
   opacity: 1;
@@ -22,11 +22,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-}   
+}
 
 .header-content {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1200px;
 }
 
 .header-container header {
@@ -34,7 +34,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
 
 .header-container header a {
   text-decoration: none;
@@ -50,16 +49,16 @@
 }
 
 .header-container header a:hover {
-    background: #dd8c8c09;
-    opacity: 1;
-  }
+  background: #dd8c8c09;
+  opacity: 1;
+}
 
 .checkout-container-off {
   display: inline;
 }
 
 .checkout-container section {
-  width: 352px;
+  width: 353px;
   background: #de4b4b;
   padding: 40px;
   border-radius: 10px 0 0 10px;
@@ -199,12 +198,12 @@ form .input {
 form {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 0px;
   width: 100%;
   margin: 0 0 0 10%;
-  margin-top: 30px;
-  margin-left: 153px;
-  margin-right: 54px;
+  margin-top: 4.2em;
+  margin-left: 112px;
+  margin-right: 35px;
 }
 
 .input-group {
@@ -226,12 +225,52 @@ form {
   height: 456px;
   width: 100%;
   background: #fff;
-  /* z-index: -1; */
   display: flex;
-  /* border-radius: 0px 20px 20px 0; */
   border: 1px solid #de4b4b30;
   border-radius: 0px 10px 10px 0px;
 }
+
+.sidebar-container {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px;
+
+  height: 250px;
+  width: 100%;
+  background: #fff;
+  /* border: 1px solid #d2d2d2; */
+  border-radius: 6px;
+  margin-left: 8px;
+  margin-bottom: 205px;
+}
+
+.sidebar-container h3 {
+  color: #de4b4b;
+  margin-bottom: 1em;
+  /* border-bottom: 1px solid red */
+}
+
+.sidebar-container h4 {
+  margin-top: auto;
+  color: #de4b4b;
+}
+
+.sidebar-container hr {
+    border-top: 1px solid #c7abab26;
+    /* margin-top: auto; */
+    opacity: 1;
+}
+
+.sidebar-container p {
+  margin-bottom: 3px;
+  color: #b8b8b8
+}
+
+
+.sidebar-container span {
+    font-weight: bold;
+    color: #a5a5a5
+  }
 
 .error-message {
   font: Regular 16px Verdana;
@@ -263,7 +302,7 @@ form input {
 }
 
 .no-visibility {
-    visibility: none;
+  visibility: none;
 }
 
 .display {
@@ -278,6 +317,7 @@ form input {
     margin-top: 110px;
     margin-left: 0;
     margin-right: 0;
+    padding: 10px;
   }
   .form-container {
     width: 100%;
@@ -380,6 +420,6 @@ form input {
     font-size: 12px;
   }
   .header-container {
-      display: none;
+    display: none;
   }
 }
