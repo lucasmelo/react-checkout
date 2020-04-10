@@ -14,6 +14,9 @@ import { FiChevronRight } from 'react-icons/fi';
 import * as yup from 'yup'
 import Validate from 'card-validator';
 import moment from 'moment';
+import { Select } from 'formik-material-ui';
+import { MenuItem } from '@material-ui/core'
+
 
 const validations = yup.object().shape({
     number: yup
@@ -35,10 +38,18 @@ const validations = yup.object().shape({
         .string()
         .min(3, 'Código inválido')
         .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid)
+        .required('Campo obrigatório'),
+    parcels: yup
+        .string()
         .required('Campo obrigatório')
 });
 
 const steps = { cart: 1, checkout: 2, done: 3 };
+const parcelOption = [
+    { option: 0, description: '2x de R$ 45.44' },
+    { option: 1, description: '3x de R$ 75.44' },
+    { option: 2, description: '2x de R$ 95.44' }
+]
 
 class Checkout extends React.Component {
 
@@ -49,6 +60,7 @@ class Checkout extends React.Component {
             name: '',
             expiration: '',
             cvv: '',
+            parcels: '',
             brand: '',
             displayBrand: 'no-display',
             filledCreditCard: 'card-no-filled',
@@ -56,8 +68,7 @@ class Checkout extends React.Component {
         };
     };
 
-    handleSubmit(e, values) {
-        e.preventDefault();
+    handleSubmit(values) {
         console.log(values)
     }
 
@@ -141,8 +152,8 @@ class Checkout extends React.Component {
                     </section>
 
                     <div className="form-container">
-                        <Formik initialValues={{ name: '', number: '', expiration: '', cvv: '' }} onSubmit={(values, event) =>
-                            this.handleSubmit(values, event)} validationSchema={validations} >
+                        <Formik initialValues={{ name: '', number: '', expiration: '', cvv: '', parcels: '' }} onSubmit={(values) =>
+                            this.handleSubmit(values)} validationSchema={validations} >
                             {({ errors, touched }) => (
                                 <FormikForm>
                                     <div className="stepper">
@@ -178,7 +189,7 @@ class Checkout extends React.Component {
                                     <div className="input-group">
                                         <div>
                                             <Field
-                                                type="number"
+                                                type="text"
                                                 placeholder="Validade"
                                                 name="expiration"
                                                 className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
@@ -197,8 +208,23 @@ class Checkout extends React.Component {
                                             />
                                             <ErrorMessage component="span" name="cvv" className="error-message" />
                                         </div>
+
                                     </div>
 
+                                    <Field
+                                        component={Select}
+                                        name="parcels"
+                                        className={touched.parcels && errors.parcels ? 'input-error' : 'input'}
+                                    >
+
+                                        {parcelOption.map(parcel => (
+                                            <MenuItem name="parcels" value={parcel.description}>
+                                                {parcel.description}
+                                            </MenuItem>
+                                        ))};
+                                    </Field>
+
+                                    <ErrorMessage component="span" name="parcels" className="error-message" />
 
 
                                     <button type="submit" className="button">
@@ -217,9 +243,6 @@ class Checkout extends React.Component {
                         <p>Mouse Y</p>
                         <p>Roteador X</p>
                         <p>SSD Y</p>
-                        <p>Monitor W</p>
-                        <p>Teclado Z</p>
-                        <p>Teclado Z</p>
                         <hr></hr>
 
                         <h4> TOTAL </h4>

@@ -234,7 +234,6 @@ form {
   display: flex;
   flex-flow: column nowrap;
   padding: 10px;
-
   height: 250px;
   width: 100%;
   background: #fff;
@@ -242,6 +241,7 @@ form {
   border-radius: 6px;
   margin-left: 8px;
   margin-bottom: 205px;
+  font-family: 'Baloo Thambi 2';
 }
 
 .sidebar-container h3 {
@@ -268,7 +268,8 @@ form {
 
 
 .sidebar-container span {
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 19px;
     color: #a5a5a5
   }
 
