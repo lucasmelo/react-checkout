@@ -2,21 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 import '../../global.css';
-import creditCard from '../../assets/credit-card.svg'
-// import templateCreditCard from '../../assets/template-credit-card.svg';
-// import Form from '../Form'
-import shopLogo from '../../assets/shop-logo.svg'
-import { FiChevronLeft } from 'react-icons/fi'
-// import visaImg from '../../assets/visa.png';
+import creditCard from '../../assets/credit-card.svg';
+import shopLogo from '../../assets/shop-logo.svg';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { ErrorMessage, Formik, Form as FormikForm, Field } from 'formik';
 import checked from '../../assets/checked.svg';
-import { FiChevronRight } from 'react-icons/fi';
-import * as yup from 'yup'
+import * as yup from 'yup';
 import Validate from 'card-validator';
 import moment from 'moment';
 import { Select } from 'formik-material-ui';
-import { MenuItem } from '@material-ui/core'
-
+import { MenuItem } from '@material-ui/core';
+import MaskedInput from 'react-text-mask'
 
 const validations = yup.object().shape({
     number: yup
@@ -26,19 +22,19 @@ const validations = yup.object().shape({
         .min(10, 'Digite todos os números do seu cartão'),
     name: yup
         .string()
+        .required('Campo obrigatório')
         .min(3, 'Insira o nome completo')
-        .matches(' ', 'Insira o nome completo')
-        .required('Campo nome é obrigatório'),
+        .matches(' ', 'Insira o nome completo'),
     expiration: yup
         .string()
+        .required('Campo obrigatório')
         .matches(/([0-9]{2})\/([0-9]{2})/, 'Formato inválido. Use: MM/AA')
-        .test('test-number', 'Data inválida', value => Validate.expirationDate(value).isValid)
-        .required('Campo obrigatório'),
+        .test('test-number', 'Data inválida', value => Validate.expirationDate(value).isValid),
     cvv: yup
         .string()
+        .required('Campo obrigatório')
         .min(3, 'Código inválido')
-        .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid)
-        .required('Campo obrigatório'),
+        .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid),
     parcels: yup
         .string()
         .required('Campo obrigatório')
@@ -48,7 +44,7 @@ const steps = { cart: 1, checkout: 2, done: 3 };
 const parcelOption = [
     { option: 0, description: '2x de R$ 45.44' },
     { option: 1, description: '3x de R$ 75.44' },
-    { option: 2, description: '2x de R$ 95.44' }
+    { option: 2, description: '4x de R$ 95.44' }
 ]
 
 class Checkout extends React.Component {
@@ -169,14 +165,28 @@ class Checkout extends React.Component {
                                         <span>Confirmação</span>
                                     </div>
 
-                                    <Field
+                                    {/* <Field
                                         type="number"
                                         maxLength={20}
                                         placeholder="Número do cartão"
                                         name="number"
                                         className={touched.number && errors.number ? 'input-error' : 'input'}
                                         onKeyUp={e => this.handleValues('number', e.target.value)}
-                                    />
+                                    /> */}
+
+
+                                    <Field name='number'>
+                                        {({ field }) => (
+                                            <MaskedInput
+                                                mask={[/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/]}
+                                                {...field}
+                                                placeholder='Telefone'
+                                                className={touched.number && errors.number ? 'input-error' : 'input'}
+                                                onKeyUp={e => this.handleValues('number', e.target.value)}
+                                            />
+                                        )}
+                                    </Field>
+
                                     <ErrorMessage component="span" name="number" className="error-message" />
 
                                     <Field
