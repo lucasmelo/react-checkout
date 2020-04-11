@@ -9,7 +9,7 @@ import { ErrorMessage, Formik, Form as FormikForm, Field } from 'formik';
 import checked from '../../assets/checked.svg';
 import * as yup from 'yup';
 import Validate from 'card-validator';
-import moment from 'moment';
+// import moment from 'moment';
 import { Select } from 'formik-material-ui';
 import { MenuItem } from '@material-ui/core';
 import MaskedInput from 'react-text-mask'
@@ -19,7 +19,7 @@ const validations = yup.object().shape({
         .number()
         .required('Campo obrigatório')
         .test('test-number', 'Número de cartão inválido', value => Validate.number(value).isValid)
-        .min(10, 'Digite todos os números do seu cartão'),
+        .min(16, 'Digite todos os números do seu cartão'),
     name: yup
         .string()
         .required('Campo obrigatório')
@@ -45,7 +45,7 @@ const parcelOption = [
     { option: 0, description: '2x de R$ 45.44' },
     { option: 1, description: '3x de R$ 75.44' },
     { option: 2, description: '4x de R$ 95.44' }
-]
+];
 
 class Checkout extends React.Component {
 
@@ -87,13 +87,28 @@ class Checkout extends React.Component {
                         this.setState({ brand: 'visa' })
                         break;
                     default:
-                        this.setState({ brand: '' });
+                        this.setState({ brand: '', filledCreditCard: 'card-no-filled' });
                         break;
                 }
                 this.setState({ displayBrand: 'display', filledCreditCard: 'card-filled' })
             }
         } else {
             this.setState({ displayBrand: 'no-display', filledCreditCard: 'card-no-filled' })
+        }
+    }
+
+    handleImgChange(e, value) {
+        switch (e) {
+            case 'keyup':
+                this.setState({ filledCreditCard: 'cvv-template' });
+                break;
+            case 'blur':
+                if (!this.state.number.length && !this.state.name.length && !this.state.expiration.length) {
+                    this.setState({ filledCreditCard: 'card-no-filled' });
+                } else {
+                    this.setState({ filledCreditCard: 'card-filled' });
+                }
+                break;
         }
     }
 
@@ -175,12 +190,13 @@ class Checkout extends React.Component {
                                     /> */}
 
 
-                                    <Field name='number'>
+                                    <Field name="number">
                                         {({ field }) => (
                                             <MaskedInput
+                                                guide={false}
                                                 mask={[/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/]}
                                                 {...field}
-                                                placeholder='Telefone'
+                                                placeholder="Número do cartão"
                                                 className={touched.number && errors.number ? 'input-error' : 'input'}
                                                 onKeyUp={e => this.handleValues('number', e.target.value)}
                                             />
@@ -198,20 +214,35 @@ class Checkout extends React.Component {
 
                                     <div className="input-group">
                                         <div>
-                                            <Field
+                                            {/* <Field
                                                 type="text"
                                                 placeholder="Validade"
                                                 name="expiration"
                                                 className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
-                                                onKeyUp={e => this.handleValues('expiration', moment().format(e.target.value))}
-                                            />
+                                                onKeyUp={e => this.handleValues('expiration', e.target.value)}
+                                            /> */}
+
+
+                                            <Field name="expiration">
+                                                {({ field }) => (
+                                                    <MaskedInput
+                                                        guide={false}
+                                                        mask={[/\d/, /\d/, '/', /\d/, /\d/]}
+                                                        {...field}
+                                                        placeholder="Data de validade"
+                                                        className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
+                                                        onKeyUp={e => this.handleValues('expiration', e.target.value)}
+                                                    />
+                                                )}
+                                            </Field>
+
                                             <ErrorMessage component="span" name="expiration" className="error-message" />
                                         </div>
 
                                         <div>
                                             <Field
-                                                onKeyUp={() => this.setState({ filledCreditCard: 'cvv-template', showInputedCardData: 'no-display' })}
-                                                onBlur={() => this.setState({ filledCreditCard: 'card-filled' })}
+                                                onKeyUp={e => this.handleImgChange('keyup', e.target.value)}
+                                                onBlur={e => this.handleImgChange('blur', e.target.value)}
                                                 placeholder="CVV"
                                                 name="cvv"
                                                 className={touched.cvv && errors.cvv ? 'input-error' : 'input'}

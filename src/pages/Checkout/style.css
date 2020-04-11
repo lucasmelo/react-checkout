@@ -200,8 +200,7 @@ form {
   flex-direction: column;
   padding: 0px;
   width: 100%;
-  margin: 0 0 0 10%;
-  margin-top: 4.2em;
+  margin-top: 2.2em;
   margin-left: 112px;
   margin-right: 35px;
 }
@@ -226,7 +225,7 @@ form {
   width: 100%;
   background: #fff;
   display: flex;
-  border: 1px solid #de4b4b30;
+  /* border: 1px solid #de4b4b30; */
   border-radius: 0px 10px 10px 0px;
 }
 
@@ -310,7 +309,17 @@ form input {
   display: inline;
 }
 
-@media (max-width: 60.5em) {
+header img {
+  margin-right: auto;
+}
+
+header a {
+  /* margin-left: auto; */
+  margin-left: 11px;
+}
+
+
+@media (max-width: 60.4em) {
   form {
     display: flex;
     justify-content: center;
@@ -367,6 +376,7 @@ form input {
   .img-credit-card {
     display: flex;
     justify-content: center;
+    width: unset;
   }
   .checkout-container section h1 {
     font: Bold 16px/20px Verdana, sans-serif;
@@ -384,7 +394,7 @@ form input {
     position: absolute;
     top: 50%;
     left: 55%;
-    transform: translate(-54%, -10%);
+    transform: translate(-55%, -86%);
     font-family: "Baloo Thambi 2", cursive;
     font-size: 19px;
     letter-spacing: 2.88px;
@@ -401,7 +411,7 @@ form input {
   .bottom-left {
     position: absolute;
     bottom: 58px;
-    left: 62px;
+    left: 9px;
     font-size: 13px;
     font-family: "Baloo Thambi 2", cursive;
     letter-spacing: 0px;
@@ -412,7 +422,7 @@ form input {
   .bottom-right {
     position: absolute;
     bottom: 58px;
-    right: 63px;
+    right: 10px;
     letter-spacing: 0px;
     color: #ffffff;
     text-shadow: 0px 1px 2px #000000b3;
@@ -421,6 +431,9 @@ form input {
     font-size: 12px;
   }
   .header-container {
+    display: none;
+  }
+  .sidebar-container {
     display: none;
   }
 }
