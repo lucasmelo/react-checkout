@@ -13,6 +13,8 @@ import Validate from 'card-validator';
 import { Select } from 'formik-material-ui';
 import { MenuItem } from '@material-ui/core';
 import MaskedInput from 'react-text-mask'
+import moment from 'moment';
+import api from '../../services/api'
 
 const validations = yup.object().shape({
     number: yup
@@ -60,12 +62,20 @@ class Checkout extends React.Component {
             brand: '',
             displayBrand: 'no-display',
             filledCreditCard: 'card-no-filled',
-            showInputedCardData: 'img-credit-card'
+            showInputedCardData: true
         };
     };
 
-    handleSubmit(values) {
-        console.log(values)
+    async handleSubmit(values) {
+        values.expiration = moment(values.expiration).format('MM-YY,h:mm:ss a');
+        values.number = values.number.replace(/\s/g, '');
+
+        try {
+            const response = await api.post('vendas', values);
+            alert(`Seu id de acesso: ${response.data.id}`);
+        } catch (err) {
+            alert('Tente novamente');
+        }
     }
 
     handleValues(field, value) {
@@ -101,6 +111,7 @@ class Checkout extends React.Component {
         switch (e) {
             case 'keyup':
                 this.setState({ filledCreditCard: 'cvv-template' });
+                this.setState({ showInputedCardData: false });
                 break;
             case 'blur':
                 if (!this.state.number.length && !this.state.name.length && !this.state.expiration.length) {
@@ -108,7 +119,11 @@ class Checkout extends React.Component {
                 } else {
                     this.setState({ filledCreditCard: 'card-filled' });
                 }
+                this.setState({ showInputedCardData: true });
                 break;
+            default:
+                this.setState({ filledCreditCard: 'card-no-filled' });
+
         }
     }
 
@@ -148,16 +163,16 @@ class Checkout extends React.Component {
                                 src={`../${this.state.filledCreditCard}.svg`}
                                 alt="Cartão de Crédito" className="credit-card"
                             />
-                            <div className="top-left">
+                            <div className={this.state.showInputedCardData ? 'top-left' : 'no-display'}>
                                 <img
                                     src={`../${this.state.brand}.png`}
                                     alt="Visa"
                                     className={this.state.displayBrand.toString()}
                                 />
                             </div>
-                            <div className="centered"> {this.state.number || '**** **** **** ****'} </div>
-                            <div className="bottom-left"> {this.state.name.toUpperCase() || 'NOME DO TITULAR'} </div>
-                            <div className="bottom-right">{this.state.expiration || '00/00'} </div>
+                            <div className={this.state.showInputedCardData ? 'centered' : 'no-display'}> {this.state.number || '**** **** **** ****'} </div>
+                            <div className={this.state.showInputedCardData ? 'bottom-left' : 'no-display'}> {this.state.name.toUpperCase() || 'NOME DO TITULAR'} </div>
+                            <div className={this.state.showInputedCardData ? 'bottom-right' : 'no-display'}>{this.state.expiration || '00/00'} </div>
                         </div>
 
                     </section>
@@ -179,16 +194,6 @@ class Checkout extends React.Component {
                                         <img src={checked} alt="Check" className="checked" />
                                         <span>Confirmação</span>
                                     </div>
-
-                                    {/* <Field
-                                        type="number"
-                                        maxLength={20}
-                                        placeholder="Número do cartão"
-                                        name="number"
-                                        className={touched.number && errors.number ? 'input-error' : 'input'}
-                                        onKeyUp={e => this.handleValues('number', e.target.value)}
-                                    /> */}
-
 
                                     <Field name="number">
                                         {({ field }) => (
@@ -214,15 +219,6 @@ class Checkout extends React.Component {
 
                                     <div className="input-group">
                                         <div>
-                                            {/* <Field
-                                                type="text"
-                                                placeholder="Validade"
-                                                name="expiration"
-                                                className={touched.expiration && errors.expiration ? 'input-error' : 'input'}
-                                                onKeyUp={e => this.handleValues('expiration', e.target.value)}
-                                            /> */}
-
-
                                             <Field name="expiration">
                                                 {({ field }) => (
                                                     <MaskedInput
@@ -267,10 +263,10 @@ class Checkout extends React.Component {
 
                                     <ErrorMessage component="span" name="parcels" className="error-message" />
 
-
                                     <button type="submit" className="button">
                                         CONTINUAR
-                                    </button>
+                                        </button>
+
                                 </FormikForm>
                             )}
                         </Formik>

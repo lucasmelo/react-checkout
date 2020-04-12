@@ -318,13 +318,16 @@ header a {
   margin-left: 11px;
 }
 
+.no-visibility {
+  visibility: hidden;
+}
 
 @media (max-width: 60.4em) {
   form {
     display: flex;
     justify-content: center;
     margin: 0;
-    margin-top: 110px;
+    margin-top: 125px;
     margin-left: 0;
     margin-right: 0;
     padding: 10px;
@@ -335,6 +338,7 @@ header a {
     display: flex;
     border: 1px solid #de4b4b30;
     border-radius: 0;
+    height: 100%
   }
   .checkout-container {
     display: flex;
@@ -411,7 +415,7 @@ header a {
   .bottom-left {
     position: absolute;
     bottom: 58px;
-    left: 9px;
+    left: 49px;
     font-size: 13px;
     font-family: "Baloo Thambi 2", cursive;
     letter-spacing: 0px;
@@ -422,7 +426,7 @@ header a {
   .bottom-right {
     position: absolute;
     bottom: 58px;
-    right: 10px;
+    right: 44px;
     letter-spacing: 0px;
     color: #ffffff;
     text-shadow: 0px 1px 2px #000000b3;
@@ -436,4 +440,5 @@ header a {
   .sidebar-container {
     display: none;
   }
+  
 }

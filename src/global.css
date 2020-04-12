@@ -46,7 +46,7 @@ button:hover {
   filter: brightness(90%);
 }
 
-@media (max-width: 50.5em) {
+@media (max-width: 60.4em) {
   .button {
     margin-top: auto;
     width: 100%;
