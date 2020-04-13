@@ -12,8 +12,9 @@ import Validate from 'card-validator';
 import { MenuItem } from '@material-ui/core';
 import MaskedInput from 'react-text-mask'
 import moment from 'moment';
-import api from '../../services/api'
-import { Select } from 'formik-material-ui'
+import api from '../../services/api';
+import { Select } from 'formik-material-ui';
+
 const validations = yup.object().shape({
     number: yup
         .number()
@@ -33,7 +34,8 @@ const validations = yup.object().shape({
     cvv: yup
         .string()
         .required('Campo obrigatório')
-        .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid),
+        .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid)
+        .min(3, 'Código inválido'),
     parcels: yup
         .string()
         .required('Campo obrigatório')
@@ -71,7 +73,7 @@ class Checkout extends React.Component {
             const response = await api.post('vendas', values);
             alert(`Seu id de acesso: ${response.data.id}`);
         } catch (err) {
-            alert('Tente novamente');
+            console.log(err)
         }
     }
 
@@ -213,6 +215,7 @@ class Checkout extends React.Component {
                                         placeholder="Nome (igual  ao cartão)"
                                         name="name" className={touched.name && errors.name ? 'input-error' : 'input'}
                                         onKeyUp={e => this.handleValues('name', e.target.value)}
+                                        maxLength={30}
                                     />
                                     <ErrorMessage component="span" name="name" className="error-message" />
 
@@ -243,6 +246,7 @@ class Checkout extends React.Component {
                                                 onBlur={e => this.handleImgChange('blur', e.target.value)}
                                                 placeholder="CVV"
                                                 className={touched.cvv && errors.cvv ? 'input-error' : 'input'}
+                                                maxLength={3}
                                             />
                                             <ErrorMessage component="span" name="cvv" className="error-message" />
                                         </div>
@@ -258,7 +262,7 @@ class Checkout extends React.Component {
                                         type="text"
                                         label="parcels"
                                         disableUnderline={true}
-                                        style={{ borderBottom: '1px solid #dadada', marginTop: '30px' }}
+                                        style={{ borderBottom: '1px solid #dadada', marginTop: '30px'}}
                                         displayEmpty
                                     >
                                         <MenuItem value="" >

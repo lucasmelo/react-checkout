@@ -2,7 +2,6 @@
 
 .checkout-container {
   display: flex;
-  /* justify-content: flex-start; */
   align-items: center;
   width: 100;
   max-width: 1200px;
@@ -96,10 +95,6 @@
   display: flex;
   flex-flow: row nowrap;
   margin-bottom: 30px;
-}
-
-.credit-card {
-  /* margin-top: 30px; */
 }
 
 .steps {
@@ -202,7 +197,6 @@ form .input {
   margin-top: 1.8em;
   text-align: left;
   opacity: 1;
-
   font-family: Verdana;
   font-size: 14px;
   letter-spacing: 0px;
@@ -214,7 +208,6 @@ form .input {
 .select-error {
   border-bottom: 1px solid #de4b4b !important;
 }
-
 
 form {
   display: flex;
@@ -358,7 +351,6 @@ header img {
 }
 
 header a {
-  /* margin-left: auto; */
   margin-left: 11px;
 }
 
@@ -372,8 +364,7 @@ header a {
     justify-content: center;
     margin: 0;
     margin-top: 125px;
-    margin-left: 0;
-    margin-right: 0;
+
     padding: 10px;
   }
   .form-container {
