@@ -31,7 +31,7 @@ const validations = yup.object().shape({
         .matches(/([0-9]{2})\/([0-9]{2})/, 'Formato inválido. Use: MM/AA')
         .test('test-number', 'Data inválida', value => Validate.expirationDate(value).isValid),
     cvv: yup
-        .number()
+        .string()
         .required('Campo obrigatório')
         .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid),
     parcels: yup
@@ -192,9 +192,10 @@ class Checkout extends React.Component {
                                         <span>Confirmação</span>
                                     </div>
 
-                                    <Field name="number" data-testid="number">
+                                    <Field name="number">
                                         {({ field }) => (
                                             <MaskedInput
+                                                data-testid="number"
                                                 guide={false}
                                                 mask={[/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/]}
                                                 {...field}
@@ -208,6 +209,7 @@ class Checkout extends React.Component {
                                     <ErrorMessage component="span" name="number" className="error-message" />
 
                                     <Field
+                                        data-testid="name"
                                         placeholder="Nome (igual  ao cartão)"
                                         name="name" className={touched.name && errors.name ? 'input-error' : 'input'}
                                         onKeyUp={e => this.handleValues('name', e.target.value)}
@@ -219,6 +221,7 @@ class Checkout extends React.Component {
                                             <Field name="expiration">
                                                 {({ field }) => (
                                                     <MaskedInput
+                                                        data-testid="expiration"
                                                         guide={false}
                                                         mask={[/\d/, /\d/, '/', /\d/, /\d/]}
                                                         {...field}
@@ -234,6 +237,7 @@ class Checkout extends React.Component {
 
                                         <div>
                                             <Field
+                                                data-testid="cvv"
                                                 name="cvv"
                                                 onKeyUp={e => this.handleImgChange('keyup', e.target.value)}
                                                 onBlur={e => this.handleImgChange('blur', e.target.value)}
@@ -246,12 +250,13 @@ class Checkout extends React.Component {
                                     </div>
 
                                     <Field
+                                        data-testid="parcels"
                                         component={Select}
                                         name="parcels"
                                         className={touched.parcels && errors.parcels ? 'select-error' : 'input'}
                                         options={this.state.parcelOption}
                                         type="text"
-                                        label="testes"
+                                        label="parcels"
                                         disableUnderline={true}
                                         style={{ borderBottom: '1px solid #dadada', marginTop: '30px' }}
                                         displayEmpty
@@ -262,8 +267,8 @@ class Checkout extends React.Component {
                                             </span>
                                         </MenuItem>
 
-                                        {this.state.parcelOption.map(parcel => (
-                                            <MenuItem name="parcels" value={parcel.description}>
+                                        {this.state.parcelOption.map((parcel, index) => (
+                                            <MenuItem key={index} name="parcels" value={parcel.description}>
                                                 {parcel.description}
                                             </MenuItem>
                                         ))};
@@ -271,7 +276,7 @@ class Checkout extends React.Component {
 
                                     <ErrorMessage component="span" name="parcels" className="error-message" />
 
-                                    <button type="submit" className="button">
+                                    <button type="submit" className="button" data-testid="button">
                                         CONTINUAR
                                         </button>
 
