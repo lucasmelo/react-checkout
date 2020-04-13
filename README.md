@@ -1,5 +1,5 @@
 ---
-__React Checkout __
+## React Checkout
 
 - Esta aplicação nada mais é que a estrutura de uma tela de checkout com validações completas.
 - Qualquer dúvida, report, ou sugestão, favor entrar em contato :D
