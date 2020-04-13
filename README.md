@@ -1,5 +1,5 @@
 ---
-__React Checkout :)__
+__React Checkout __
 
 - Esta aplicação nada mais é que a estrutura de uma tela de checkout com validações completas.
 - Qualquer dúvida, report, ou sugestão, favor entrar em contato :D
@@ -34,4 +34,4 @@ Basicamente, para rodar o projeto, é necessário que você tenha o NODE e NPM i
 ### NOTAS
 - é importante lembrar que a porta `3333`, no ambiente de desenvolvimento, é a padrão para as chamada HTTP;
 ---
-#### Happy hacking! 8-)
+#### Happy hacking!
