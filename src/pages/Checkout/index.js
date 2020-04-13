@@ -192,7 +192,7 @@ class Checkout extends React.Component {
                                         <span>Confirmação</span>
                                     </div>
 
-                                    <Field name="number">
+                                    <Field name="number" data-testid="number">
                                         {({ field }) => (
                                             <MaskedInput
                                                 guide={false}
