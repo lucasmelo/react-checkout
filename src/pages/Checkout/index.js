@@ -70,7 +70,7 @@ class Checkout extends React.Component {
         values.number = values.number.replace(/\s/g, '');
 
         try {
-            const response = await api.post('vendas', values);
+            const response = await api.post('pagar', values);
             alert(`Seu id de acesso: ${response.data.id}`);
         } catch (err) {
             console.log(err)
