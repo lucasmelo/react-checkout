@@ -27,7 +27,7 @@
 Basicamente, para rodar o projeto, é necessário que você tenha o NODE e NPM instalador na sua maquina, após:
 - clone o projeto com `git clone https://github.com/lucasmelo/react-checkout.git`
 - após, execute o `npm install` para instalar todas as dependências
-- pronto! use o `npm start` para rodar a 
+- pronto! use o `npm start` para rodar a aplicação
 
 ### NOTAS
 - é importante lembrar que a porta `3333`, no ambiente de desenvolvimento, é a padrão para as chamada HTTP;
