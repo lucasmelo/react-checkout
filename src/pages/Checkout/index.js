@@ -9,13 +9,11 @@ import { ErrorMessage, Formik, Form as FormikForm, Field } from 'formik';
 import checked from '../../assets/checked.svg';
 import * as yup from 'yup';
 import Validate from 'card-validator';
-// import moment from 'moment';
-import { Select } from 'formik-material-ui';
 import { MenuItem } from '@material-ui/core';
 import MaskedInput from 'react-text-mask'
 import moment from 'moment';
 import api from '../../services/api'
-
+import { Select } from 'formik-material-ui'
 const validations = yup.object().shape({
     number: yup
         .number()
@@ -33,9 +31,8 @@ const validations = yup.object().shape({
         .matches(/([0-9]{2})\/([0-9]{2})/, 'Formato inválido. Use: MM/AA')
         .test('test-number', 'Data inválida', value => Validate.expirationDate(value).isValid),
     cvv: yup
-        .string()
+        .number()
         .required('Campo obrigatório')
-        .min(3, 'Código inválido')
         .test('test-number', 'Código inválido', value => Validate.cvv(value).isValid),
     parcels: yup
         .string()
@@ -43,11 +40,6 @@ const validations = yup.object().shape({
 });
 
 const steps = { cart: 1, checkout: 2, done: 3 };
-const parcelOption = [
-    { option: 0, description: '2x de R$ 45.44' },
-    { option: 1, description: '3x de R$ 75.44' },
-    { option: 2, description: '4x de R$ 95.44' }
-];
 
 class Checkout extends React.Component {
 
@@ -62,12 +54,17 @@ class Checkout extends React.Component {
             brand: '',
             displayBrand: 'no-display',
             filledCreditCard: 'card-no-filled',
-            showInputedCardData: true
+            showInputedCardData: true,
+            parcelOption: [
+                { option: 0, description: "2x de R$ 45.44" },
+                { option: 1, description: "3x de R$ 75.44" },
+                { option: 2, description: "4x de R$ 95.44" }
+            ]
         };
     };
 
     async handleSubmit(values) {
-        values.expiration = moment(values.expiration).format('MM-YY,h:mm:ss a');
+        values.expiration = moment(values.expiration).format('MM-YY,h:mm:ssa');
         values.number = values.number.replace(/\s/g, '');
 
         try {
@@ -107,7 +104,7 @@ class Checkout extends React.Component {
         }
     }
 
-    handleImgChange(e, value) {
+    handleImgChange(e) {
         switch (e) {
             case 'keyup':
                 this.setState({ filledCreditCard: 'cvv-template' });
@@ -187,11 +184,11 @@ class Checkout extends React.Component {
                                         <span> Carrinho</span>
 
                                         <FiChevronRight size={20} color="#de4b4b" style={{ marginRight: '30px' }} />
-                                        <img src={checked} alt="Check" className="checked" />
+                                        <div>2</div>
                                         <span>Pagamento </span>
 
                                         <FiChevronRight size={20} color="#de4b4b" style={{ marginRight: '30px' }} />
-                                        <img src={checked} alt="Check" className="checked" />
+                                        <div>3</div>
                                         <span>Confirmação</span>
                                     </div>
 
@@ -237,10 +234,10 @@ class Checkout extends React.Component {
 
                                         <div>
                                             <Field
+                                                name="cvv"
                                                 onKeyUp={e => this.handleImgChange('keyup', e.target.value)}
                                                 onBlur={e => this.handleImgChange('blur', e.target.value)}
                                                 placeholder="CVV"
-                                                name="cvv"
                                                 className={touched.cvv && errors.cvv ? 'input-error' : 'input'}
                                             />
                                             <ErrorMessage component="span" name="cvv" className="error-message" />
@@ -251,10 +248,21 @@ class Checkout extends React.Component {
                                     <Field
                                         component={Select}
                                         name="parcels"
-                                        className={touched.parcels && errors.parcels ? 'input-error' : 'input'}
+                                        className={touched.parcels && errors.parcels ? 'select-error' : 'input'}
+                                        options={this.state.parcelOption}
+                                        type="text"
+                                        label="testes"
+                                        disableUnderline={true}
+                                        style={{ borderBottom: '1px solid #dadada', marginTop: '30px' }}
+                                        displayEmpty
                                     >
+                                        <MenuItem value="" >
+                                            <span style={{ fontSize: '14px', color: '#757575' }}>
+                                                Quantidade de parcelas
+                                            </span>
+                                        </MenuItem>
 
-                                        {parcelOption.map(parcel => (
+                                        {this.state.parcelOption.map(parcel => (
                                             <MenuItem name="parcels" value={parcel.description}>
                                                 {parcel.description}
                                             </MenuItem>

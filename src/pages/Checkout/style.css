@@ -118,7 +118,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .stepper span {
@@ -130,9 +130,21 @@
 }
 
 .checked {
-  background: #de4b4b;
+  background: url("../../assets/bg-icon.svg");
   padding: 5px;
-  border-radius: 33px;
+  background-repeat: round;
+}
+
+.stepper div {
+  border: 1px solid #de4b4b;
+  border-radius: 41px;
+  height: 21px;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #de4b4b;
+  opacity: 1;
 }
 
 .img-credit-card {
@@ -187,13 +199,22 @@
 
 form .input {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 1.8em;
   text-align: left;
-  font: Regular 17px/22px Verdana;
-  font-size: 15px;
+  opacity: 1;
+
+  font-family: Verdana;
+  font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
+  color: #3c3c3c;
+  font-weight: 500;
 }
+
+.select-error {
+  border-bottom: 1px solid #de4b4b !important;
+}
+
 
 form {
   display: flex;
@@ -201,8 +222,9 @@ form {
   padding: 0px;
   width: 100%;
   margin-top: 2.2em;
-  margin-left: 112px;
-  margin-right: 35px;
+  margin-left: 110px;
+  margin-right: 22px;
+  margin-bottom: 5px;
 }
 
 .input-group {
@@ -240,7 +262,22 @@ form {
   border-radius: 6px;
   margin-left: 8px;
   margin-bottom: 205px;
-  font-family: 'Baloo Thambi 2';
+  font-family: "Baloo Thambi 2";
+}
+
+.MuiInputBase-root svg {
+  top: calc(50% - 12px);
+  /* color: #de4b4b; */
+  right: 0;
+  position: absolute;
+  pointer-events: none;
+  background: url("../../assets/arrow-down.svg");
+  background-repeat: no-repeat;
+}
+
+.MuiInput-underline::before {
+  border-bottom: none !important;
+  border-bottom: 1px solid #dadada !important;
 }
 
 .sidebar-container h3 {
@@ -254,23 +291,30 @@ form {
   color: #de4b4b;
 }
 
+.MuiSelect-icon {
+  color: transparent !important;
+}
+
+.MuiSelect-select {
+  background: none !important;
+}
+
 .sidebar-container hr {
-    border-top: 1px solid #c7abab26;
-    /* margin-top: auto; */
-    opacity: 1;
+  border-top: 1px solid #c7abab26;
+  /* margin-top: auto; */
+  opacity: 1;
 }
 
 .sidebar-container p {
   margin-bottom: 3px;
-  color: #b8b8b8
+  color: #b8b8b8;
 }
 
-
 .sidebar-container span {
-    font-weight: 700;
-    font-size: 19px;
-    color: #a5a5a5
-  }
+  font-weight: 700;
+  font-size: 19px;
+  color: #a5a5a5;
+}
 
 .error-message {
   font: Regular 16px Verdana;
@@ -338,7 +382,7 @@ header a {
     display: flex;
     border: 1px solid #de4b4b30;
     border-radius: 0;
-    height: 100%
+    height: 100%;
   }
   .checkout-container {
     display: flex;
@@ -415,7 +459,7 @@ header a {
   .bottom-left {
     position: absolute;
     bottom: 58px;
-    left: 49px;
+    left: 35px;
     font-size: 13px;
     font-family: "Baloo Thambi 2", cursive;
     letter-spacing: 0px;
@@ -440,5 +484,4 @@ header a {
   .sidebar-container {
     display: none;
   }
-  
 }
