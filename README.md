@@ -22,6 +22,9 @@
 - Biblioteca [YUP](https://github.com/jquense/yup);
 - Card validator: [clique aqui](https://stackworx.github.io/formik-material-ui/) para mais detalhes.
 ---
+### Testes automatizados
+- Os testes foram realizados com a biblioteca react-testing-library
+---
 ### Executando o projeto
 
 Basicamente, para rodar o projeto, é necessário que você tenha o NODE e NPM instalador na sua maquina, após:
